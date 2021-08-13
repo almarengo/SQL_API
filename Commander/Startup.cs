@@ -30,10 +30,11 @@ namespace Commander
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
+            var connectionString = "server=localhost;user=CommanderAPI;password=rootroot;database=CommanderDB";
 
-            services.AddDbContext<CommanderContext>(opt => opt.UseMySQL(Configuration.GetConnectionString("CommanderConnection")));
+            var serverVersion = ServerVersion.AutoDetect(connectionString);
 
-            //services.AddTransient<MySqlConnection>(_ => new MySqlConnection(Configuration["ConnectionStrings:CommanderConnection"]));
+            services.AddDbContext<CommanderContext>(opt => opt.UseMySql(connectionString, serverVersion));
 
             services.AddControllers();
 
