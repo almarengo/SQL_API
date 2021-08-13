@@ -13,9 +13,9 @@ namespace Commander.Migrations
                 {
                     Id = table.Column<int>(type: "int", nullable: false)
                         .Annotation("MySql:ValueGenerationStrategy", MySqlValueGenerationStrategy.IdentityColumn),
-                    HowTo = table.Column<string>(type: "longtext CHARACTER SET utf8mb4", nullable: true),
-                    Line = table.Column<string>(type: "longtext CHARACTER SET utf8mb4", nullable: true),
-                    Platform = table.Column<string>(type: "longtext CHARACTER SET utf8mb4", nullable: true)
+                    HowTo = table.Column<string>(type: "varchar(250) CHARACTER SET utf8mb4", maxLength: 250, nullable: false),
+                    Line = table.Column<string>(type: "longtext CHARACTER SET utf8mb4", nullable: false),
+                    Platform = table.Column<string>(type: "longtext CHARACTER SET utf8mb4", nullable: false)
                 },
                 constraints: table =>
                 {

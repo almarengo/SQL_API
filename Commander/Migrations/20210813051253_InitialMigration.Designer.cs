@@ -8,7 +8,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace Commander.Migrations
 {
     [DbContext(typeof(CommanderContext))]
-    [Migration("20210813050511_InitialMigration")]
+    [Migration("20210813051253_InitialMigration")]
     partial class InitialMigration
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -25,12 +25,16 @@ namespace Commander.Migrations
                         .HasColumnType("int");
 
                     b.Property<string>("HowTo")
-                        .HasColumnType("longtext CHARACTER SET utf8mb4");
+                        .IsRequired()
+                        .HasMaxLength(250)
+                        .HasColumnType("varchar(250) CHARACTER SET utf8mb4");
 
                     b.Property<string>("Line")
+                        .IsRequired()
                         .HasColumnType("longtext CHARACTER SET utf8mb4");
 
                     b.Property<string>("Platform")
+                        .IsRequired()
                         .HasColumnType("longtext CHARACTER SET utf8mb4");
 
                     b.HasKey("Id");
